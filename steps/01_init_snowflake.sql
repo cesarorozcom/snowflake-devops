@@ -38,3 +38,10 @@ CREATE OR ALTER STAGE bronze.raw;
 
 -- Copy file from GitHub to internal stage
 copy files into @bronze.raw from @snowflake_common.public.snowflake_repo/branches/main/data/airport_list.json;
+
+USE ROLE SECURITYADMIN;
+
+CREATE USER SECONDARY_ACCOUNTADMIN
+PASSWORD = 'Password123'
+DEFAULT_ROLE = 'ACCOUNTADMIN'
+MUST_CHANGE_PASSWORD = TRUE;
